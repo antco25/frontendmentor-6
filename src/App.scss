@@ -1,0 +1,16 @@
+@import "./components/common/forSize.scss";
+
+.App {
+    max-width: 1200px;
+    margin: auto;
+    padding: 0 2rem;
+
+    @include for-size(b4) {
+        padding: 0 1.5rem;
+    }
+
+    @include for-size(mobile) {
+        width: $breakpoint-mobile;
+        padding: 0;
+    }
+}

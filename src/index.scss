@@ -1,0 +1,17 @@
+@import url("https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;700&display=swap");
+@import "./components/common/styles";
+
+body {
+    font-family: "Kumbh Sans", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    color: var(--neutral-1);
+    margin: 0;
+    padding: 0;
+
+    &.no-scroll {
+        overflow-y: hidden
+    }
+}
+
+

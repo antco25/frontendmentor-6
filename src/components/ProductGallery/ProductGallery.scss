@@ -1,0 +1,254 @@
+@import "../common/forSize.scss";
+
+@mixin icon-nav {
+    width: 12px;
+    height: 18px;
+    padding: 1rem 1.1875rem;
+    background-color: var(--neutral-5);
+    border-radius: 50%;
+    top: calc(50% - 25px);
+    &:hover path {
+        stroke: var(--primary-1);
+    }
+}
+
+.product-gallery {
+    @include for-size(b4) {
+        padding: 2rem 3rem;
+    }
+
+    @include for-size(b5) {
+        padding: 2rem 1rem;
+    }
+
+    @include for-size(mobile) {
+        padding: 0rem;
+    }
+
+    >.product-image {
+        position: relative;
+        
+        .product-main-image {
+            width: 100%;
+            border-radius: 1rem;
+            cursor: pointer;
+            display: block;
+        }
+
+        .icon-previous,
+        .icon-next {
+            @include icon-nav;
+            visibility: hidden;
+            position: absolute;
+            cursor: pointer;
+            margin: 0 1rem;
+        }
+
+        .icon-next {
+            right: 0;
+        }
+
+        @include for-size(b4) {
+            .product-main-image {
+                cursor: default;
+            }
+
+            .icon-previous,
+            .icon-next {
+                visibility: visible;
+            }
+        }
+
+        @include for-size(mobile) {
+            .product-main-image {
+                border-radius: 0;
+            }
+        }
+    }
+
+    .product-thumbnails {
+        @include for-size(b4) {
+            display: none;
+        }
+
+        $thumb-padding: 1rem;
+        $thumb-border-width: 0.25rem;
+        $thumb-border-rad: 0.75rem;
+
+        margin: 0 -#{$thumb-padding + $thumb-border-width};
+
+        .thumbnail {
+            box-sizing: border-box;
+            display: inline-block;
+            width: 25%;
+            padding: $thumb-padding;
+            position: relative;
+        }
+
+        .thumbnail img {
+            box-sizing: border-box;
+            display: block;
+            width: 100%;
+            border: $thumb-border-width solid transparent;
+            border-radius: $thumb-border-rad;
+        }
+
+        .thumbnail-wrap {
+            border-radius: $thumb-border-rad;
+        }
+        .thumbnail-wrap:hover {
+            img {
+                background-color: var(--primary-1);
+                opacity: 0.5;
+            }
+
+            &::after {
+                content: "";
+                width: calc(100% - #{$thumb-padding * 2} - #{$thumb-border-width * 2});
+                height: calc(100% - #{$thumb-padding * 2} - #{$thumb-border-width * 2});
+                position: absolute;
+                left: $thumb-padding;
+                top: $thumb-padding;
+                border-radius: $thumb-border-rad;
+                border: $thumb-border-width solid hsl(26, 100%, 55%);
+                cursor: pointer;
+            }
+        }
+    }
+
+    >.product-thumbnails {
+        @include for-size(b2) {
+            $thumb-padding: 0.5rem;
+            $thumb-border-width: 0.25rem;
+            $thumb-border-rad: 0.75rem;
+
+            margin: 0 -#{$thumb-padding + $thumb-border-width};
+
+            .thumbnail {
+                padding: $thumb-padding;
+            }
+
+            .thumbnail img {
+                border-width: $thumb-border-width;
+                border-radius: $thumb-border-rad;
+            }
+
+            .thumbnail-wrap {
+                border-radius: $thumb-border-rad;
+            }
+
+            .thumbnail-wrap:hover::after {
+                width: calc(100% - #{$thumb-padding * 2} - #{$thumb-border-width * 2});
+                height: calc(100% - #{$thumb-padding * 2} - #{$thumb-border-width * 2});
+                left: $thumb-padding;
+                top: $thumb-padding;
+                border-radius: $thumb-border-rad;
+                border-width: $thumb-border-width
+            }
+        }
+
+        @include for-size(b3) {
+            $thumb-padding: 0.375rem;
+            $thumb-border-width: 0.1875rem;
+            $thumb-border-rad: 0.625rem;
+
+            margin: 0 -#{$thumb-padding + $thumb-border-width};
+
+            .thumbnail {
+                padding: $thumb-padding;
+            }
+
+            .thumbnail img {
+                border-width: $thumb-border-width;
+                border-radius: $thumb-border-rad;
+            }
+
+            .thumbnail-wrap {
+                border-radius: $thumb-border-rad;
+            }
+
+            .thumbnail-wrap:hover::after {
+                width: calc(100% - #{$thumb-padding * 2} - #{$thumb-border-width * 2});
+                height: calc(100% - #{$thumb-padding * 2} - #{$thumb-border-width * 2});
+                left: $thumb-padding;
+                top: $thumb-padding;
+                border-radius: $thumb-border-rad;
+                border-width: $thumb-border-width
+            }
+        }
+    }
+
+    .product-gallery-lightbox {
+        position: fixed;
+        visibility: hidden;
+        background-color: rgba(0, 0, 0, 0.75);
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        opacity: 0;
+        transition: 0.3s;
+    }
+
+    .light-box-enabled {
+        visibility: visible;
+        opacity: 1;
+    }
+
+    .product-gallery-lightbox {
+        .lightbox-wrap {
+            margin: 5rem auto;
+            width: 32rem;
+        }
+    }
+
+    .product-gallery-lightbox .lightbox-wrap {
+        .product-image {
+            position: relative;
+
+            .product-main-image {
+                width: 100%;
+                border-radius: 1rem;
+                cursor: auto;
+                display: block;
+            }
+            .icon-close,
+            .icon-previous,
+            .icon-next {
+                position: absolute;
+                cursor: pointer;
+                z-index: 1;
+            }
+
+            .icon-close {
+                padding: 1rem;
+                top: -3rem;
+                right: -1rem;
+                &:hover path {
+                    fill: var(--primary-1);
+                }
+            }
+
+            .icon-previous,
+            .icon-next {
+                @include icon-nav;
+            }
+
+            .icon-previous {
+                left: -25px;
+            }
+
+            .icon-next {
+                right: -25px;
+            }
+        }
+
+        .product-thumbnails {
+            width: 512px;
+            margin: auto;
+            .thumbnail-wrap:hover {
+                background: white;
+            }
+        }
+    }
+}

@@ -1,0 +1,135 @@
+@import '../common/forSize.scss';
+
+.cart {
+    position: relative;
+
+    @include for-size(b5) {
+        position: static;
+
+        &>.wrapper {
+            position: relative;
+        }
+    }
+}
+
+.icon-cart {
+    padding: 1rem;
+}
+
+.cart-quantity {
+    position: absolute;
+    top: 0.4rem;
+    left: 1.7rem;
+    font-family: inherit;
+    font-size: 0.75rem;
+    color: var(--neutral-5);
+    padding: 1px 8px;
+    border-radius: 12px;
+    background-color: var(--primary-1);
+}
+
+.cart .cart-dropdown {
+    $cart-padding: 2rem;
+    border-radius: 0.75rem;
+    background-color: var(--neutral-5);
+    box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.05);
+    width: 24rem;
+    min-height: 15rem;
+    z-index: 2;
+
+    position: absolute;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity .3s, visibility .3s;
+    top: calc(100% + 0.5rem);
+    right: -5rem;
+
+    @include for-size(b3) {
+        right: -3rem;
+    }
+
+    
+    @include for-size(b5) {
+        width: 360px;
+        top: 5rem;
+        left: 0;
+        right: 0;
+        margin-left: auto;
+        margin-right: auto
+    }
+
+    @include for-size(mobile) {
+        top: 6rem;
+        margin: 0;
+        left: 8px;
+        $cart-padding: 1.5rem;
+    }
+
+    &.cart-dropdown-active {
+        visibility: visible;
+        opacity: 1;
+    }
+
+    &:hover {
+        cursor: default;
+    }
+
+    .cart-empty {
+        font-weight: 700;
+        color: var(--neutral-2);
+        padding: 4.7rem 0;
+        text-align: center;
+    }
+
+    h3 {
+        margin: 0;
+        font-size: 1rem;
+        padding: $cart-padding $cart-padding 1rem $cart-padding;
+        border-bottom: 3px solid var(--neutral-4);
+    }
+
+    .wrapper {
+        padding: 0 $cart-padding $cart-padding $cart-padding;
+    }
+
+    .item {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 1.5rem 0;
+        color: var(--neutral-2);
+
+        & > * {
+            display: inline-block;
+        }
+
+        .item-thumb {
+            width: 3rem;
+            border-radius: 0.25rem;
+        }
+
+        .item-desc {
+            flex-grow: 1;
+            margin: 0 1rem;
+            & > * {
+                display: block;
+            }
+
+            &:hover {
+                cursor: text;
+            }
+
+            .item-price b {
+                color: var(--neutral-6);
+            }
+        }
+
+        .item-delete {
+            cursor: pointer;
+        }
+    }
+
+    .checkout-button {
+        width: 100%;
+    }
+}

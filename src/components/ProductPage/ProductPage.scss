@@ -1,0 +1,123 @@
+@import "../common/forSize.scss";
+
+.product-page {
+    display: flex;
+    justify-content: center;
+    padding: 3rem 0;
+
+    & > * {
+        padding: 3rem;
+        flex-basis: 50%;
+    }
+
+    @include for-size(b1) {
+        & > * {
+            padding: 1rem;
+        }
+    }
+
+    @include for-size(b4) {
+        flex-direction: column;
+        padding-top: 0;
+    }
+
+    @include for-size(mobile) {
+        & > * {
+          padding: 0;
+        }
+    }
+}
+
+.product-page .product-detail {
+    @include for-size(mobile) {
+        padding: 1.5rem 1rem;
+    }
+
+    .product-name,
+    .product-desc,
+    .product-price,
+    .product-quantity {
+        padding: 1rem 0;
+    }
+
+    .product-company {
+        text-transform: uppercase;
+        font-weight: 700;
+        color: var(--primary-1);
+    }
+
+    .product-name {
+        margin: 0;
+        font-size: 2.75rem;
+
+        @include for-size(b2) {
+            font-size: 2rem;
+            padding-bottom: 0;
+        }
+    }
+
+    .product-desc {
+        color: var(--neutral-2);
+        margin: 0;
+    }
+
+    .product-price {
+        .price-current {
+            display: flex;
+            align-items: center;
+            font-weight: 700;
+
+            .price-value {
+                font-size: 1.5rem;
+            }
+
+            .price-discount {
+                color: var(--primary-1);
+                background-color: var(--primary-2);
+                border-radius: 0.25rem;
+                padding: 0.25rem 0.5rem;
+                margin-left: 1rem;
+            }
+        }
+
+        .price-standard {
+            text-decoration: line-through;
+            color: var(--neutral-2);
+        }
+
+        @include for-size(mobile) {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+    }
+
+    .product-quantity {
+        display: flex;
+        justify-content: center;
+
+        .quantity-select {
+            flex-basis: 33%;
+        }
+
+        .app-button {
+            margin-left: 1rem;
+            flex-grow: 1;
+        }
+
+        @include for-size(b1) {
+            .quantity-select {
+                flex-basis: 40%;
+            }
+        }
+
+        @include for-size(b2) {
+            flex-direction: column;
+
+            .app-button {
+                margin-top: 1rem;
+                margin-left: 0;
+            }
+        }
+    }
+}
