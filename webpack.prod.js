@@ -4,6 +4,6 @@ const common = require('./webpack.common.js');
 module.exports = merge(common, {
     mode: 'production',
     output: {
-        publicPath: "/frontendmentor-3/"
+        publicPath: "/frontendmentor-6/"
       },
 });
