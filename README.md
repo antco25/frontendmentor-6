@@ -23,6 +23,10 @@ Users should be able to:
 - Add items to the cart
 - View the cart and remove items from it
 
+## Links
+
+- Live Site URL: [https://antco25.github.io/frontendmentor-6/](https://antco25.github.io/frontendmentor-6/)
+
 ### Screenshot
 
 ![](./screenshots/fem-6-1.png)
@@ -37,5 +41,9 @@ Users should be able to:
 - CSS custom properties
 - SASS
 - Flexbox
-- Mobile-first workflow
+- Custom [webpack](https://webpack.js.org/) configuration
 - [React](https://reactjs.org/) - JS library
+
+## Author
+
+- [My Portfolio](https://antco25.github.io)
